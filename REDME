@@ -1,0 +1,8 @@
+# Para inicializar API verifique o comando de inicialização no "packahe.json"
+# Veja as Variáveis de ambiente necessárias par ao projeto rodar em ".env.exemplo"
+
+#COMO COMPILA A API.
+# Os arquivos serão compilados pedo "tsc", pra isso
+# o "tscconfig.json" transpila o código typescript em JavaScript
+# Remova o comentário da opcção outDir e configure a pasta que sera gerado o código JavaScript
+
