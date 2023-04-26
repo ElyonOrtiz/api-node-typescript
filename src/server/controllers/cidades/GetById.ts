@@ -3,18 +3,18 @@ import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
 import { validation } from '../../shared/middleware';
 
-interface ICidade{
-  nome: string;
+interface IParamsProps{
+  id?: number;
 }
 
 
-export const createValidation = validation((getschema) => ({
-  body: getschema<ICidade>(yup.object().shape({
-    nome: yup.string().required().min(3),
-  })),  
+export const getByIdValidation = validation( (getschema) => ({
+  params: getschema<IParamsProps>(yup.object().shape({
+    id: yup.number().required(),
+  }))  
 }));
 
-export const create = async (req: Request<{}, {}, ICidade>, res:Response) => {
+export const getById  = async (req: Request<IParamsProps>, res:Response) => {
   
   console.log(req.body);
 

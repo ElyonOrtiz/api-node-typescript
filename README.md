@@ -29,4 +29,4 @@
 
 #UPANDODO MIDDLEWARE
 
-# Para um código mais limpo e de mais facil manutenção, vamos criar uma função que valida
+# Para um código mais limpo e de mais facil manutenção, vamos criar uma função que faz o papel de middleware, na pasta shared/middleware vamos ter o arquivo Validation, ele tera uma função genérica para parametrizar o código
