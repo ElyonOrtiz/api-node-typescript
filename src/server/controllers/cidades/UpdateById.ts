@@ -12,7 +12,7 @@ interface IBodyProps {
 }
 
 
-export const UpdateByIdValidation = validation( (getschema) => ({
+export const updateByIdValidation = validation( (getschema) => ({
   body: getschema<IBodyProps>(yup.object().shape({
     nome: yup.string().required().min(3),
   })),
@@ -24,6 +24,8 @@ export const UpdateByIdValidation = validation( (getschema) => ({
 export const  updateById = async (req: Request<IParamsProps, {}, IBodyProps>, res:Response) => {
   
   console.log(req.body);
-
+  console.log(req.query);
+  
+  
   return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
 };

@@ -25,7 +25,7 @@ router.get('/cidades/:id',
 );
 
 router.put('/cidades',
-  CidadedesController.updateValidation,
+  CidadedesController.updateByIdValidation,
   CidadedesController.updateById
 );
 
