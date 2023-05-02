@@ -27,7 +27,7 @@ export const test: Knex.Config = {
   ...development,
   connection: ':meomory',
 };
-
+  
 export const production: Knex.Config = {
   ...development,    
 };
