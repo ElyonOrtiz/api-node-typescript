@@ -1,5 +1,4 @@
 import { Knex } from 'knex';
-//Esse importe gerencia o caminho de pastas
 import path from 'path';
 
 
@@ -9,13 +8,14 @@ export const development: Knex.Config = {
   connection: {
     filename: path.resolve(__dirname, '..', '..', '..', '..', 'database.sqlite')
   },
-  migrations: {
-    directory: path.resolve(__dirname, '..', 'migrations', ),
+  migrations: { 
+    directory: path.resolve(__dirname, '..', 'migrations'),
   },
   seeds: {
-    directory: path.resolve(__dirname, '..', 'seeds ', ),
+    directory: path.resolve(__dirname, '..', 'seeds'),
   },
   pool: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     afterCreate: (connection: any, done: Function) => {
       connection.run('PRAGMA foreign_keys = ON');
       done();
@@ -25,9 +25,9 @@ export const development: Knex.Config = {
 
 export const test: Knex.Config = {
   ...development,
-  connection: ':meomory',
+  connection: ':memory:',
 };
-  
+
 export const production: Knex.Config = {
-  ...development,    
+  ...development,
 };
