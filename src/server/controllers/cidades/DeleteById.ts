@@ -8,7 +8,7 @@ interface IParamsProps{
 }
 
 
-export const createValidation = validation( (getschema) => ({
+export const deleteValidation = validation( (getschema) => ({
   params: getschema<IParamsProps>(yup.object().shape({
     id: yup.number().integer().required().moreThan(0), 
   })),

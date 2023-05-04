@@ -133,7 +133,7 @@ export default {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: [
-    './test/jest.setup.ts'
+    './tests/jest.setup.ts'
   ],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
@@ -153,7 +153,7 @@ export default {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    '<rootDir>/tests?**/*.test.ts'    
+    '<rootDir>/tests/**/*.test.ts'    
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
