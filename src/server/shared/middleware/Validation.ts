@@ -6,6 +6,7 @@ type TProperty = 'body' | 'header' | 'params' | 'query';
 
 type TGetSchema = <T extends Maybe<AnyObject>>(schema: ObjectSchema<T>) => ObjectSchema<T>
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TAllSchemas = Record<TProperty, ObjectSchema<any>>;
 
 type TGetAllSchemas = (getSchema: TGetSchema) => Partial<TAllSchemas>;
@@ -13,6 +14,7 @@ type TGetAllSchemas = (getSchema: TGetSchema) => Partial<TAllSchemas>;
 type TValidation = (getAllSchemas: TGetAllSchemas) => RequestHandler;
 
 export const validation: TValidation = (getAllSchemas) => async (req, res, next) => {
+  
   const schemas = getAllSchemas((schema) => schema);
 
 
@@ -32,12 +34,15 @@ export const validation: TValidation = (getAllSchemas) => async (req, res, next)
 
       errorsResult[key] = errors;
     }
+
   });
 
 
   if (Object.entries(errorsResult).length === 0) {
     return next();
   } else {
+    console.log('chegou aqui');
+
     return res.status(StatusCodes.BAD_REQUEST).json({ errors: errorsResult });
   }
 };

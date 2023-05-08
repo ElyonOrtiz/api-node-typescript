@@ -3,16 +3,14 @@ import { Knex } from '../../knex';
 import { ICidade } from '../../models';
 
 
-
-
-export const updateById = async (cidade: ICidade ): Promise< Number | Error > => {
+export const updateById = async (id: number, cidade: Omit<ICidade, 'id'> ): Promise< void | Error > => {
   try {
-    const [result]: any = await Knex(ETableNames.cidade).where('id').update('nome');
-    if ( typeof result === 'object'){
-      return result.nome;
-    } else if ( typeof result === 'number') {
-      return result;
-    } 
+    const result = await Knex(ETableNames.cidade)
+      .update(cidade)
+      .where('id', '=', id);
+
+    if (result > 0) return;
+
     return new Error('Erro ao atualizar registro');
   } catch (error) {
     console.log(error);

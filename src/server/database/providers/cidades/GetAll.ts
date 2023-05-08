@@ -1,5 +1,3 @@
-import { promises } from 'dns';
-import { NumberLiteralType } from 'typescript';
 import { ICidade } from '../../models';
 import { Knex } from '../../knex';
 import { ETableNames } from '../../ETableNames';

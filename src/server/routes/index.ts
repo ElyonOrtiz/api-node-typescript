@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { CidadedesController } from './../controllers/';
+import { deleteById } from '../controllers/cidades/DeleteById';
 
 
 const router = Router();
@@ -24,9 +25,14 @@ router.get('/cidades/:id',
   CidadedesController.getById
 );
 
-router.put('/cidades',
+router.put('/cidades/:id',
   CidadedesController.updateByIdValidation,
   CidadedesController.updateById
+);
+
+router.delete('/cidades/:id',
+  CidadedesController.deleteByIdValidation,
+  CidadedesController.deleteById
 );
 
 
