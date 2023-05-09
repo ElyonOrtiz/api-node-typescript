@@ -26,7 +26,7 @@ describe('Cidades - Create' , () => {
       .send({ nome: 'Ca' });
 
     expect(res1.statusCode).toEqual(StatusCodes.BAD_REQUEST);
-    expect(res1.body).toHaveProperty('errors.body.name');
+    expect(res1.body).toHaveProperty('errors.body.nome');
   });
 
  

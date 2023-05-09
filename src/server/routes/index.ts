@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { CidadedesController } from './../controllers/';
-import { deleteById } from '../controllers/cidades/DeleteById';
 
 
 const router = Router();
