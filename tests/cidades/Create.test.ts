@@ -16,13 +16,12 @@ describe('Cidades - Create' , () => {
 
     expect(res1.statusCode).toEqual(StatusCodes.CREATED);
     expect(typeof res1.body).toEqual('number');
-  }
-  );
+  });
 
 
   it ('Criar registro com nome muito curto', async () => {
     const res1 = await testServer
-      .post('./cidades')
+      .post('/cidades')
       .send({ nome: 'Ca' });
 
     expect(res1.statusCode).toEqual(StatusCodes.BAD_REQUEST);

@@ -17,7 +17,7 @@ describe('Cidades - DeleteById' , () => {
     expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
     const deleteCid = await testServer
-      .delete(`cidades/${res1.body}`)
+      .delete(`/cidades/${res1.body}`)
       .send();
 
     expect(deleteCid.statusCode).toEqual(StatusCodes.NO_CONTENT);

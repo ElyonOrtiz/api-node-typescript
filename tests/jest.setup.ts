@@ -9,6 +9,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await Knex.destroy();
+  await Knex.seed.run();
 });
 
 
