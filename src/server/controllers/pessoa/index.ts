@@ -3,14 +3,12 @@ import * as getAll  from './GetAll';
 import * as getById from './GetById';
 import * as deleteById from './DeleteById';
 import * as updateById  from './UpdateById';
-import * as count from './Count';
 
-export const PessoasProvider = {
+
+export const pessoasController = {
   ...create,
   ...getAll,
   ...deleteById,
   ...getById,
   ...updateById,
-  ...count
 };
-

@@ -11,7 +11,7 @@ export const getAll = async (page: number, limit: number, filter: string, id = 0
     const result = await Knex(ETableNames.cidade)
       .select('*')
       .where('id', Number(id))
-      .orWhere('nome', 'like', `%${filter}`)
+      .orWhere('nome', 'like', `%${filter}%`)
       .offset((page -1) * limit)
       .limit(limit);
 
@@ -27,6 +27,6 @@ export const getAll = async (page: number, limit: number, filter: string, id = 0
     return result;
   } catch (error) {
     console.log(error);
-    return new Error('Erro ao consultar registro');        
+    return new Error('Erro ao consultar registros');        
   }
 }; 
