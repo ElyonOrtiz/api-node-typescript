@@ -6,5 +6,5 @@ export interface IPessoa {
   nome: string;
   sobreNome: string;
   email: string;
-  CidadeId: number;
+  cidadeId: number;
 }

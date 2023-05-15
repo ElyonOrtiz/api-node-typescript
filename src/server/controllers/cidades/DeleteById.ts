@@ -9,8 +9,8 @@ interface IParamsProps{
 }
 
 
-export const deleteByIdValidation = validation( (getschema) => ({
-  params: getschema<IParamsProps>(yup.object().shape({
+export const deleteByIdValidation = validation( (getSchema) => ({
+  params: getSchema<IParamsProps>(yup.object().shape({
     id: yup.number().integer().required().moreThan(0), 
   })),
 }));
@@ -21,7 +21,7 @@ export const deleteById = async (req: Request<IParamsProps>, res:Response) => {
   if(!req.params.id){
     return res.status(StatusCodes.BAD_REQUEST).json({
       errors: {
-        default: 'O parânmetro id é obrigatório'
+        default: 'O parâmetro id é obrigatório'
       }
     });
   }
