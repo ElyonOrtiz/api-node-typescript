@@ -18,7 +18,7 @@ export const getAllValidation = validation((getSchema) => ({
   }))
 }));
 
-export const getSchema = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) =>{
+export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) =>{
   const result = await PessoasProvider.getAll(req.query.page || 1, req.query.filter || '', req.query.limit || 7);
   const count = await PessoasProvider.count('');
 
