@@ -2,16 +2,8 @@ import { Request, Response } from 'express';
 import { IPessoa } from '../../database/models';
 import { validation } from '../../shared/middleware';
 import * as yup from 'yup';
-import { Knex } from '../../database/knex';
 import { PessoasProvider } from '../../database/providers/Pessoa';
-import { error } from 'console';
 import { StatusCodes } from 'http-status-codes';
-
-
-
-
-
-
 
 interface IParamProps {
     id?: number;

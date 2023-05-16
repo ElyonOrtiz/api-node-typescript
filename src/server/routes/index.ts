@@ -35,27 +35,27 @@ router.delete('/cidades/:id',
 );
 
 //RoutersOfPersons
-router.get('/cidades',
+router.get('/pessoas',
   PessoasController.getAllValidation,
   PessoasController.getAll);
 
 
-router.post('/cidades',
+router.post('/pessoas',
   PessoasController.createValidation,
   PessoasController.create );
 
 
-router.get('/cidades/:id',
+router.get('/pessoas/:id',
   PessoasController.getByIdValidation,
   PessoasController.getById
 );
 
-router.put('/cidades/:id',
+router.put('/pessosas/:id',
   PessoasController.updateByIdValidation,
   PessoasController.updateById
 );
 
-router.delete('/cidades/:id',
+router.delete('/pessoas/:id',
   PessoasController.deleteByIdValidation,
   PessoasController.deleteById
 );
