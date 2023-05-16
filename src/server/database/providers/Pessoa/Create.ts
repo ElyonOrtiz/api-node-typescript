@@ -7,8 +7,8 @@ import { IPessoa } from '../../models';
 
 export const create = async (pessoa: Omit<IPessoa, 'id'> ): Promise< Number| Error> => {
   try {
-    const [{count}] =await Knex(ETableNames.cidade)
-      .where('id', '=', pessoa.CidadeId)
+    const [{count}] = await Knex(ETableNames.cidade)
+      .where('id', '=', Number(pessoa.cidadeId))
       .count<[{ count:number}]>('* as count');
 
     if(count === 0){
