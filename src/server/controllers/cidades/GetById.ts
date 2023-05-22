@@ -19,8 +19,8 @@ export const getById  = async (req: Request<IParamsProps>, res:Response) => {
   
   if(!req.params.id){
     return res.status(StatusCodes.BAD_REQUEST).json({
-      error: {
-        default: 'O parânmeetro id precisa ser informado.'
+      errors: {
+        default: 'O parâmetro id precisa ser informado.'
       }
     });
   }
