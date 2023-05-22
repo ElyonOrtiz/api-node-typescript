@@ -10,10 +10,7 @@ describe('Pessoas - Create',()=> {
 
     cidadeId = resCidade.body;
   });
-
-
-  it('Cria registro', async ()=> {
-
+  it('Cria Registro', async ()=> {
     const res1 = await testServer
       .post('/pessoas')
       .send({ 
