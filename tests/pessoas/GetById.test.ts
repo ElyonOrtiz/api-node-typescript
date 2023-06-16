@@ -12,7 +12,7 @@ describe('Pessoas - GetById', () => {
   });
   it ('Cria Registro' , async () => {
     const res1 = await testServer
-      .post('/pesssoas')
+      .post('/pessoas')
       .send({  
         nome: 'Elyon',
         sobreNome: 'Ortiz',

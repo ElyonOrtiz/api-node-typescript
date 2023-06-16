@@ -8,15 +8,15 @@ import { IPessoa } from '../../models';
 export const updateById = async(id:number, pessoa: Omit<IPessoa, 'id'>) : Promise< void | Error> => {
   try {
     const result = await Knex(ETableNames.pessoa)
-      .where('id', '=', id)
-      .update(pessoa);
+    .update(pessoa)
+    .where('id', '=', id);
 
     if(result > 0) return;
 
-    return new Error('Erro ao atualizar todos os registros');
+    return new Error('Erro ao atualizar registro');
   } catch (error) {
     console.log(error);
-    return new Error('Erro ao atualizar0 todos os registros do banco de dados');
+    return new Error('Erro ao atualizar registro do banco de dados');
         
   }
 };

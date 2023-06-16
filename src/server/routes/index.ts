@@ -50,7 +50,7 @@ router.get('/pessoas/:id',
   PessoasController.getById
 );
 
-router.put('/pessosas/:id',
+router.put('/pessoas/:id', 
   PessoasController.updateByIdValidation,
   PessoasController.updateById
 );

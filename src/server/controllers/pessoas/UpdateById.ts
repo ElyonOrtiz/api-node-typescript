@@ -13,12 +13,12 @@ interface IBodyProps extends Omit<IPessoa, 'id'> {
 }
 
 export const updateByIdValidation = validation((getSchema) => ({
-  query: getSchema<IParamProps>(yup.object().shape({
+  params: getSchema<IParamProps>(yup.object().shape({
     id: yup.number()
   })),
   body: getSchema<IBodyProps>(yup.object().shape({
-    nome:yup.string().min(3).max(50).required(),
-    sobreNome:yup.string().min(3).max(50).required(),
+    nome:yup.string().min(3).max(150).required(),
+    sobreNome:yup.string().min(3).max(150).required(),
     email:yup.string().email().required(),
     cidadeId:yup.number().integer().moreThan(0).required(),
   }))
@@ -43,5 +43,5 @@ export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res:
     });
   }
 
-  return res.status(StatusCodes.NO_CONTENT).send();
+  return res.status(StatusCodes.NO_CONTENT).json(result);
 };

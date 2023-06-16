@@ -4,9 +4,6 @@ import * as yup from 'yup';
 import { StatusCodes } from 'http-status-codes';
 import { PessoasProvider } from '../../database/providers/Pessoa';
 
-
-
-
 interface IParamsProps {
     id?: number;
 }
@@ -29,7 +26,7 @@ export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
 
   const result = await PessoasProvider.deleteById(req.params.id);
   if(result instanceof Error){
-    return res.status(StatusCodes.BAD_REQUEST).json({
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
         default: result.message
       }

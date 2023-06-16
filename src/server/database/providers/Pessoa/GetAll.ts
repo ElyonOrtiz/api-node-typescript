@@ -3,9 +3,7 @@ import { Knex } from '../../knex';
 import { IPessoa } from '../../models';
 
 
-
-
-export const getAll = async( limit: number, filter: string, page: number) : Promise< IPessoa[] | Error> => {
+export const getAll = async( page:number, limit: number, filter: string) : Promise< IPessoa[] | Error> => {
   try {
     const result = await Knex(ETableNames.pessoa)
       .select('*')

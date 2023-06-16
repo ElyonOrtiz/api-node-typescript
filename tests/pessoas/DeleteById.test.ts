@@ -12,7 +12,7 @@ describe('Pessoas - Delete', () => {
   });
   it ('Cria Registro' , async () => {
     const res1 = await testServer
-      .post('/pesssoas')
+      .post('/pessoas')
       .send({  
         nome: 'Elyon',
         sobreNome: 'Ortiz',
@@ -21,7 +21,7 @@ describe('Pessoas - Delete', () => {
     expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
     const deleteCid = await testServer
-      .delete(`/cidades/${res1.body}`)
+      .delete(`/pessoas/${res1.body}`)
       .send();
 
     expect(deleteCid.statusCode).toEqual(StatusCodes.NO_CONTENT);
@@ -30,7 +30,7 @@ describe('Pessoas - Delete', () => {
 
   it ('Tenta apagar registro que não existe' , async () => {
     const res1 = await testServer
-      .delete('/cidades/9999')
+      .delete('/pessoas/9999')
       .send();
     
     expect(res1.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);

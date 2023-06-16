@@ -29,12 +29,12 @@ describe('Pessoas - Update', () => {
         email: 'testexato@gmail.com',
         cidadeId, });
   
-    expect(resUpdate.statusCode).toEqual(StatusCodes.OK);
-    expect(resUpdate.body).toHaveProperty('nome');
+    expect(resUpdate.statusCode).toEqual(StatusCodes.NO_CONTENT);
   });
+  
   it ('Tenta Atualizar registro que não existe' , async () => {
     const res1 = await testServer
-      .put('/pessoas/9999')
+      .put('/pessoas/999999')
       .send({ 
         nome: 'Elyon',
         sobreNome: 'Ortiz',

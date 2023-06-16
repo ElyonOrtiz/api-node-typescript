@@ -1,44 +1,40 @@
 import { Request, Response } from 'express';
-import { validation } from '../../shared/middleware';
-import * as yup from 'yup';
-import { PessoasProvider } from '../../database/providers/Pessoa';
 import { StatusCodes } from 'http-status-codes';
+import * as yup from 'yup';
 
-interface IQueryProps{
-    page?: number;
-    limit?: number;
-    filter?: string;
+import { validation } from '../../shared/middleware';
+import { PessoasProvider } from '../../database/providers/Pessoa';
+
+
+interface IQueryProps {
+  page?: number;
+  limit?: number;
+  filter?: string;
 }
-
-export const getAllValidation = validation((getSchema) => ({
-  query: getSchema<IQueryProps>(yup.object().shape({
-    page: yup.number().moreThan(0),
-    limit: yup.number().moreThan(0),
-    filter: yup.string()
-  }))
+export const getAllValidation = validation(get => ({
+  query: get<IQueryProps>(yup.object().shape({
+    filter: yup.string().default(''),
+    page: yup.number().integer().moreThan(0).default(1),
+    limit: yup.number().integer().moreThan(0).default(7),
+  })),
 }));
 
-export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) =>{
-  const result = await PessoasProvider.getAll(req.query.page || 1, req.query.filter || '', req.query.limit || 7);
-  const count = await PessoasProvider.count('');
+export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
+  const result = await PessoasProvider.getAll(req.query.page || 1, req.query.limit || 7, req.query.filter || '');
+  const count = await PessoasProvider.count(req.query.filter);
 
-  if (result instanceof Error){
+  if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      errors:{
-        default: result.message
-      }
+      errors: { default: result.message }
     });
-  }else if (count instanceof Error){
+  } else if (count instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      errors:{
-        default: count.message
-      }
+      errors: { default: count.message }
     });
   }
 
-  res.setHeader('acess-control-expose-headers', 'x-total-count');
+  res.setHeader('access-control-expose-headers', 'x-total-count');
   res.setHeader('x-total-count', count);
 
   return res.status(StatusCodes.OK).json(result);
-
 };

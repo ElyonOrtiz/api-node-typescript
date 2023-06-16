@@ -10,9 +10,9 @@ describe('Pessoas - GetAll', () => {
 
     cidadeId = resCidade.body;
   });
-  it ('Cria Registro' , async () => {
+  it ('Busca Registro' , async () => {
     const res1 = await testServer
-      .post('/pesssoas')
+      .post('/pessoas')
       .send({  
         nome: 'Elyon',
         sobreNome: 'Ortiz',
@@ -21,9 +21,8 @@ describe('Pessoas - GetAll', () => {
     expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
     const resBuscada = await testServer
-      .get('/pesssoas')
+      .get('/pessoas')
       .send();
-
     expect(Number(resBuscada.header['x-total-count'])).toBeGreaterThan(0);
     expect(resBuscada.statusCode).toEqual(StatusCodes.OK);
     expect(resBuscada.body.length).toBeGreaterThan(0);

@@ -1,7 +1,18 @@
 import { StatusCodes } from 'http-status-codes';
 import { testServer } from '../jest.setup';
-
+//let accessToken = ''
+//  beforeAll(async () => {
+//    const email = 'create-pessoas@gmail.com';
+//    await testServer.post('/cadastrar').send({
+//       email, senha: '12345678', nome: 'teste'
+//    });
+//    const singInRes = await testServer.post('/entrar').send({email, senha:'12345678'});
+//
+//    accessToken = singInRes.body.accessToken;
+//  })
 describe('Pessoas - Create',()=> {
+  
+  
   let cidadeId: number | undefined = undefined;
   beforeAll ( async () => {
     const resCidade = await testServer
