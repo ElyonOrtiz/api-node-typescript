@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { CidadedesController, PessoasController } from './../controllers/';
+import { CidadedesController, PessoasController, UsersController } from './../controllers/';
 
 
 const router = Router();
@@ -58,6 +58,17 @@ router.put('/pessoas/:id',
 router.delete('/pessoas/:id',
   PessoasController.deleteByIdValidation,
   PessoasController.deleteById
+);
+
+router.post('/entrar', 
+  UsersController.singInValidation,
+  UsersController.singIn
+);
+
+router.post('/cadastrar',
+  UsersController.singUpSValidation,
+  UsersController.singUp
+  
 );
 
 
