@@ -24,6 +24,7 @@ export const singIn = async (req:Request<{},{}, IUsuario>, res: Response) => {
   const {email, senha} = req.body;
   const result = await UsuariosProvider.getByEmail(email);
 
+
   if(!email && senha) {
    return res.status(StatusCodes.BAD_REQUEST).json({
     errors: {
@@ -37,8 +38,8 @@ export const singIn = async (req:Request<{},{}, IUsuario>, res: Response) => {
      default: 'Email ou senha inválidos, tente novamente ou cadastre-se'
     }
    })
-  }
-  if (senha !== result.senha){
+  }  
+  if (senha !== result.senha) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
        default: 'Email ou senha inválidos, tente novamente ou cadastre-se'

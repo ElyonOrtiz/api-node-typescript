@@ -11,7 +11,7 @@ export const create = async (usuario: Omit<IUsuario, 'id'>): Promise < number | 
    .insert(usuario)
    .returning('id');
    if( typeof result === 'object'){
-    return result.id;
+    return Number(result.id);
    } else if (typeof result === 'number') {
     return result;
    }
