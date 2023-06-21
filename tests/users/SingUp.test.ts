@@ -1,11 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { testServer } from "../jest.setup";
 
- 
-
-
-
-
 describe('User - SingUp', ()=> {
    let registerEmail: string | undefined = undefined;
    beforeAll( async () => {

@@ -5,6 +5,7 @@ import { validation } from "../../shared/middleware";
 import * as yup from 'yup'
 import { UsuariosProvider } from '../../database/providers/usuarios';
 import { StatusCodes } from 'http-status-codes';
+import { PasswordCrypto } from '../../shared/services';
 
  
 
@@ -15,8 +16,8 @@ interface IBodyProps {
 
 export const singInValidation = validation((getSchema) => ({
  body: getSchema<IBodyProps>(yup.object().shape({
-   email: yup.string().required().min(6),
-   senha: yup.string().required().min(5).email(),
+   email: yup.string().required().min(6).email(),
+   senha: yup.string().required().min(5),
  }))
 }));
 
@@ -38,8 +39,10 @@ export const singIn = async (req:Request<{},{}, IUsuario>, res: Response) => {
      default: 'Email ou senha inválidos, tente novamente ou cadastre-se'
     }
    })
-  }  
-  if (senha !== result.senha) {
+  }
+  const passwordMatch = await PasswordCrypto.verifyPassword(senha, result.senha);
+
+  if (!passwordMatch) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
        default: 'Email ou senha inválidos, tente novamente ou cadastre-se'
