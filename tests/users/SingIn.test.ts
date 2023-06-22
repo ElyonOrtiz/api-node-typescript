@@ -24,5 +24,6 @@ describe('Login', ()=> {
         senha: '12345678'
       })
     expect(resp.status).toEqual(StatusCodes.OK)  
+    expect(resp.body).toHaveProperty('accessToken')
   })
 })
